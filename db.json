@@ -1,0 +1,25 @@
+{
+  "motorcycles": [
+    {
+      "id": "0001",
+      "name": "Honda POP 1101",
+      "color": "branca",
+      "value": "15000",
+      "status": "Em estoque"
+    },
+    {
+      "id": "0002",
+      "name": "Honda 500x",
+      "color": "vermelha",
+      "value": "50000",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "0003",
+      "name": "Honda CB 300F TWISTER",
+      "color": "preta",
+      "value": "30000",
+      "status": "Em trânsito"
+    }
+  ]
+}
