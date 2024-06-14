@@ -19,10 +19,22 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 52px;
   box-sizing: border-box;
   background-color: var(--bg-primary);
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   color: var(--btn-text);
+}
+
+@layer base {
+  header {
+    @apply w-full flex flex-row justify-end py-10;
+  }
+}
+
+@layer components {
+  .icons-header-container {
+    @apply flex flex-row justify-center items-center gap-4;
+  }
 }
