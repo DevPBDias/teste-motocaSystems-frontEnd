@@ -3,7 +3,25 @@
 @tailwind utilities;
 
 :root {
+  --bg-primary: #2a233c;
+  --bg-secondary: #312d4b;
+  --text-white: #cac9cd;
+  --text-purple: #8c57ff;
+  --status-bg-green: #354546;
+  --status-text-green: #56ca00;
+  --status-bg-red: #55304c;
+  --status-text-red: #ff4c51;
+  --status-bg-yellow: #544146;
+  --status-text-yellow: #ffb400;
+  --btn-text: #ffffff;
+  --btn-bg: #3badfb;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--bg-primary);
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
 }
