@@ -5,27 +5,37 @@ import { DataProps } from "@/interfaces";
 
 const MotoCard = ({ moto }: any | DataProps) => {
   return (
-    <div>
-      <div>
-        <p>#{moto?.id}</p>
-        <div>
-          <div>
-            <p>{moto?.name}</p>
-            <p>{moto?.status}</p>
+    <section className="w-full h-[138px] flex flex-row justify-between items-center bg-[--bg-secondary] rounded-[10px] px-12 my-6">
+      <section className="flex flex-row justify-center items-center gap-24 ">
+        <p className="text-[--text-purple] font-semibold text-[17px] leading-[25.5px] ">
+          #{moto?.id}
+        </p>
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-row justify-center items-center gap-2">
+            <p className="font-semibold text-[17px] leading-[25.5px] ">
+              {moto?.name}
+            </p>
+            <p className="rounded-[35px] w-[111px] text-[15px] leading-[22.5px] bg-[--status-bg-green] text-[--status-text-green] text-center">
+              {moto?.status}
+            </p>
           </div>
-          <p>Valor: R$ {moto?.value}</p>
-          <p>Cor: {moto?.color}</p>
+          <p className="text-[15px] leading-[22.5px] font-medium">
+            Valor: R$ {moto?.value}
+          </p>
+          <p className="text-[15px] leading-[22.5px] font-medium">
+            Cor: {moto?.color}
+          </p>
         </div>
-      </div>
-      <div>
+      </section>
+      <section className="flex flex-row justify-center items-center gap-4 ">
         <button type="button">
           <Image src={trashIcon} alt="trash Icon" />
         </button>
         <button type="button">
           <Image src={eyeIcon} alt=" eyeIcon" />
         </button>
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 
