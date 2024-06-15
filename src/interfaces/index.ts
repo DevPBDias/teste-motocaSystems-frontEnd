@@ -12,4 +12,6 @@ export interface TitleProps {
 
 export interface BtnProps {
   text: string;
+  width: string;
+  height: string;
 }

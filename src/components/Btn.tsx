@@ -3,11 +3,16 @@ import Link from "next/link";
 import plusIcon from "../../public/icons/plus.svg";
 import { BtnProps } from "@/interfaces";
 
-const Btn = ({ text }: BtnProps) => {
+const Btn = ({ text, width, height }: BtnProps) => {
   return (
-    <Link href="/register">
+    <Link
+      href="/register"
+      className={`${width} ${height} bg-[--btn-bg] flex flex-row items-center justify-center gap-2 rounded-[5px]`}
+    >
       <Image src={plusIcon} alt="plus icon" />
-      <p>{text}</p>
+      <p className="text-[12px] font-semibold uppercase leading-[18px]">
+        {text}
+      </p>
     </Link>
   );
 };
