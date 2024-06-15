@@ -14,4 +14,5 @@ export interface BtnProps {
   text: string;
   width: string;
   height: string;
+  route: string;
 }

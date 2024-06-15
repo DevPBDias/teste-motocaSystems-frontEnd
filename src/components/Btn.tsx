@@ -3,10 +3,10 @@ import Link from "next/link";
 import plusIcon from "../../public/icons/plus.svg";
 import { BtnProps } from "@/interfaces";
 
-const Btn = ({ text, width, height }: BtnProps) => {
+const Btn = ({ text, width, height, route }: BtnProps) => {
   return (
     <Link
-      href="/register"
+      href={route}
       className={`${width} ${height} bg-[--btn-bg] flex flex-row items-center justify-center gap-2 rounded-[5px]`}
     >
       <Image src={plusIcon} alt="plus icon" />

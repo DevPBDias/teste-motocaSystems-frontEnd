@@ -14,7 +14,12 @@ export default async function Home() {
         <PageTitle title="Tabela de Motos" />
         <section className="flex flex-row gap-4">
           <SearchInput />
-          <Btn text="novo registro" width="w-[142px]" height="h-[34px]" />
+          <Btn
+            route="/register"
+            text="novo registro"
+            width="w-[142px]"
+            height="h-[34px]"
+          />
         </section>
       </section>
       <section>
