@@ -2,14 +2,7 @@ import Btn from "@/components/Btn";
 import MotoCard from "@/components/MotoCard";
 import PageTitle from "@/components/PageTitle";
 import SearchInput from "@/components/SearchInput";
-
-interface MotoProps {
-  id: string;
-  name: string;
-  color: string;
-  value: string;
-  status: string;
-}
+import { DataProps } from "@/interfaces";
 
 async function getData() {
   const res = await fetch("http://localhost:8000/motorcycles");
@@ -30,7 +23,7 @@ export default async function Home() {
         <Btn text="novo registro" />
       </div>
       <section>
-        {data.map((moto: MotoProps) => (
+        {data.map((moto: DataProps) => (
           <MotoCard key={moto.id} moto={moto} />
         ))}
       </section>

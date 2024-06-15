@@ -1,14 +1,7 @@
 import Image from "next/image";
 import trashIcon from "../../public/icons/trash.svg";
 import eyeIcon from "../../public/icons/eye.svg";
-
-interface DataProps {
-  id: string;
-  name: string;
-  color: string;
-  value: string;
-  status: string;
-}
+import { DataProps } from "@/interfaces";
 
 const MotoCard = ({ moto }: any | DataProps) => {
   return (

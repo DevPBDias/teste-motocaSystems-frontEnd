@@ -1,10 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import plusIcon from "../../public/icons/plus.svg";
-
-interface BtnProps {
-  text: string;
-}
+import { BtnProps } from "@/interfaces";
 
 const Btn = ({ text }: BtnProps) => {
   return (
