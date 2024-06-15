@@ -3,14 +3,7 @@ import MotoCard from "@/components/MotoCard";
 import PageTitle from "@/components/PageTitle";
 import SearchInput from "@/components/SearchInput";
 import { DataProps } from "@/interfaces";
-
-async function getData() {
-  const res = await fetch("http://localhost:8000/motorcycles");
-
-  if (!res.ok) throw new Error("Failed to fetch data");
-
-  return res.json();
-}
+import { getData } from "@/utils/fetchFunctions";
 
 export default async function Home() {
   const data = await getData();
