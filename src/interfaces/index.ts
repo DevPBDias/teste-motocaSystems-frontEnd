@@ -31,3 +31,14 @@ export interface FormProps {
   btnName: string;
   btnHandleFunction?: () => void;
 }
+
+export interface InputProps {
+  labelName?: string;
+  placeholder?: string;
+  idName?: string;
+  defaultValue?: string;
+}
+
+export interface UseFormProps {
+  registerName: string;
+}
