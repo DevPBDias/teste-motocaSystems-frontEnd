@@ -1,10 +1,11 @@
+import { TitleProps } from "@/interfaces";
 import Btn from "./Btn";
 import PageTitle from "./PageTitle";
 
-const RegisterForm = () => {
+const RegisterForm = ({ title }: TitleProps) => {
   return (
     <section className="flex flex-col items-center mt-20 gap-12">
-      <PageTitle title="Preencha as informações a baixo para registrar uma Moto 🏍️" />
+      <PageTitle title={title} />
       <form className="flex flex-col gap-8">
         <div className="relative rounded-[5px] border-2 border-[--text-white] h-[50px] w-[419px]">
           <label

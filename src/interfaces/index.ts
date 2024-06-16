@@ -16,3 +16,9 @@ export interface BtnProps {
   height: string;
   route: string;
 }
+
+export interface ParamsProps {
+  params: {
+    id: string;
+  };
+}
