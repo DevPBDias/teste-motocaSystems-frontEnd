@@ -1,9 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import trashIcon from "../../public/icons/trash.svg";
 import eyeIcon from "../../public/icons/eye.svg";
 import { DataProps } from "@/interfaces";
+import { useRouter } from "next/navigation";
+import { deleteData } from "@/utils/fetchFunctions";
 
 const MotoCard = ({ moto }: any | DataProps) => {
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    await deleteData(moto.id);
+    console.log(" moto deletada");
+  };
+
   return (
     <section className="w-full h-[138px] flex flex-row justify-between items-center bg-[--bg-secondary] rounded-[10px] px-12 my-6">
       <section className="flex flex-row justify-center items-center gap-24 ">
@@ -28,10 +39,10 @@ const MotoCard = ({ moto }: any | DataProps) => {
         </div>
       </section>
       <section className="flex flex-row justify-center items-center gap-4 ">
-        <button type="button">
+        <button type="button" onClick={handleDelete}>
           <Image src={trashIcon} alt="trash Icon" />
         </button>
-        <button type="button">
+        <button type="button" onClick={() => router.push(`/edit/${moto.id}`)}>
           <Image src={eyeIcon} alt=" eyeIcon" />
         </button>
       </section>

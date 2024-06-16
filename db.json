@@ -20,13 +20,6 @@
       "color": "preta",
       "price": "30000",
       "status": "Em trânsito"
-    },
-    {
-      "id": "0004",
-      "model": "HONDA TESTE",
-      "color": "azul",
-      "price": "15000",
-      "status": "Em estoque"
     }
   ]
 }
