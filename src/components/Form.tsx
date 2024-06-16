@@ -1,13 +1,8 @@
-import { RegisterProps } from "@/interfaces";
+import { FormProps } from "@/interfaces";
 import Btn from "./Btn";
 import PageTitle from "./PageTitle";
 
-const RegisterForm = ({
-  title,
-  icon,
-  btnName,
-  btnHandleFunction,
-}: RegisterProps) => {
+const Form = ({ title, icon, btnName, btnHandleFunction }: FormProps) => {
   return (
     <section className="flex flex-col items-center mt-20 gap-12">
       <PageTitle title={title} />
@@ -94,4 +89,4 @@ const RegisterForm = ({
   );
 };
 
-export default RegisterForm;
+export default Form;

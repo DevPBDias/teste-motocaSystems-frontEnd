@@ -25,7 +25,7 @@ export interface ParamsProps {
   };
 }
 
-export interface RegisterProps {
+export interface FormProps {
   title: string;
   icon: string;
   btnName: string;
