@@ -1,8 +1,8 @@
 export interface DataProps {
   id: string;
-  name: string;
+  model: string;
   color: string;
-  value: string;
+  price: string;
   status: string;
 }
 

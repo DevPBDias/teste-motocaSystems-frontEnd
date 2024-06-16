@@ -1,11 +1,12 @@
 "use client";
 
-import { FormProps } from "@/interfaces";
+import { DataProps, FormProps } from "@/interfaces";
 import Btn from "./Btn";
 import PageTitle from "./PageTitle";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { createData } from "@/utils/fetchFunctions";
 
 const motoSchema = z.object({
   id: z.string(),
@@ -15,18 +16,30 @@ const motoSchema = z.object({
   status: z.string(),
 });
 
-type MotoData = z.infer<typeof motoSchema>;
-
 const Form = ({ title, icon, btnName, btnHandleFunction }: FormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
     reset,
-    getValues,
-  } = useForm<MotoData>({ resolver: zodResolver(motoSchema) });
+  } = useForm<DataProps>({ resolver: zodResolver(motoSchema) });
 
-  const onSubmit = (data: MotoData) => console.log(data);
+  const resetForm = () => {
+    if (isSubmitSuccessful) {
+      reset({
+        id: "",
+        model: "",
+        color: "",
+        price: "",
+        status: "",
+      });
+    }
+  };
+
+  const onSubmit = async (data: DataProps) => {
+    createData(data);
+    resetForm();
+  };
 
   return (
     <section className="flex flex-col items-center mt-20 gap-12">
@@ -44,6 +57,7 @@ const Form = ({ title, icon, btnName, btnHandleFunction }: FormProps) => {
             {...register("id")}
             placeholder="#"
           />
+          {errors.id && <span>{errors.id.message}</span>}
         </div>
         <div className="relative rounded-[5px] border-2 border-[--text-white] h-[50px] w-[419px]">
           <label
@@ -56,6 +70,7 @@ const Form = ({ title, icon, btnName, btnHandleFunction }: FormProps) => {
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
             {...register("model")}
           />
+          {errors.model && <span>{errors.model.message}</span>}
         </div>
         <div className="relative rounded-[5px] border-2 border-[--text-white] h-[50px] w-[419px]">
           <label
@@ -68,6 +83,7 @@ const Form = ({ title, icon, btnName, btnHandleFunction }: FormProps) => {
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
             {...register("color")}
           />
+          {errors.color && <span>{errors.color.message}</span>}
         </div>
         <div className="relative rounded-[5px] border-2 border-[--text-white] h-[50px] w-[419px]">
           <label
@@ -80,6 +96,7 @@ const Form = ({ title, icon, btnName, btnHandleFunction }: FormProps) => {
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
             {...register("price")}
           />
+          {errors.price && <span>{errors.price.message}</span>}
         </div>
         <div className="relative rounded-[5px] border-2 border-[--text-white] h-[50px] w-[419px]">
           <label

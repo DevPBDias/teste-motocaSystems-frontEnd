@@ -8,19 +8,19 @@ const MotoCard = ({ moto }: any | DataProps) => {
     <section className="w-full h-[138px] flex flex-row justify-between items-center bg-[--bg-secondary] rounded-[10px] px-12 my-6">
       <section className="flex flex-row justify-center items-center gap-24 ">
         <p className="text-[--text-purple] font-semibold text-[17px] leading-[25.5px] ">
-          #{moto?.id}
+          #{moto.id}
         </p>
         <div className="flex flex-col gap-2">
           <div className="flex flex-row justify-center items-center gap-2">
             <p className="font-semibold text-[17px] leading-[25.5px] ">
-              {moto?.name}
+              {moto.model}
             </p>
             <p className="rounded-[35px] w-[111px] text-[15px] leading-[22.5px] bg-[--status-bg-green] text-[--status-text-green] text-center">
-              {moto?.status}
+              {moto.status}
             </p>
           </div>
           <p className="text-[15px] leading-[22.5px] font-medium">
-            Valor: R$ {moto?.value}
+            Valor: R$ {moto?.price}
           </p>
           <p className="text-[15px] leading-[22.5px] font-medium">
             Cor: {moto?.color}

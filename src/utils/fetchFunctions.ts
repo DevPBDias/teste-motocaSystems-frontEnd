@@ -1,7 +1,27 @@
+import { DataProps } from "@/interfaces";
+
 export async function getData() {
-  const res = await fetch("http://localhost:8000/motorcycles");
+  try {
+    const response = await fetch("http://localhost:8000/motorcycles");
+    return response.json();
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
 
-  if (!res.ok) throw new Error("Failed to fetch data");
+export async function createData(data: DataProps) {
+  try {
+    const response = await fetch("http://localhost:8000/motorcycles", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-  return res.json();
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
