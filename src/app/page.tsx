@@ -18,6 +18,7 @@ export default function Home() {
     const showDataMotos = async () => {
       setMotos(await getData());
     };
+
     showDataMotos();
   }, [motos]);
 

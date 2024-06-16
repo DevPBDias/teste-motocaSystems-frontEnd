@@ -6,14 +6,52 @@ import eyeIcon from "../../public/icons/eye.svg";
 import { DataProps } from "@/interfaces";
 import { useRouter } from "next/navigation";
 import { deleteData } from "@/utils/fetchFunctions";
+import { useEffect, useState } from "react";
 
 const MotoCard = ({ moto }: any | DataProps) => {
   const router = useRouter();
+  const [statusColor, setStatusColor] = useState({
+    background: "",
+    text: "",
+  });
 
   const handleDelete = async () => {
     await deleteData(moto.id);
     console.log(" moto deletada");
   };
+
+  const handleStatus = (status: string) => {
+    switch (status) {
+      case "Em estoque":
+        setStatusColor({
+          background: "bg-[--status-bg-green]",
+          text: "text-[--status-text-green]",
+        });
+        break;
+      case "Sem estoque":
+        setStatusColor({
+          background: "bg-[--status-bg-red]",
+          text: "text-[--status-text-red]",
+        });
+        break;
+      case "Em trânsito":
+        setStatusColor({
+          background: "bg-[--status-bg-yellow]",
+          text: "text-[--status-text-yellow]",
+        });
+        break;
+      default:
+        setStatusColor({
+          background: "bg-[--status-bg-green]",
+          text: "text-[--status-text-green]",
+        });
+        break;
+    }
+  };
+
+  useEffect(() => {
+    handleStatus(moto.status);
+  }, [moto.status]);
 
   return (
     <section className="w-full h-[138px] flex flex-row justify-between items-center bg-[--bg-secondary] rounded-[10px] px-12 my-6">
@@ -26,7 +64,9 @@ const MotoCard = ({ moto }: any | DataProps) => {
             <p className="font-semibold text-[17px] leading-[25.5px] ">
               {moto.model}
             </p>
-            <p className="rounded-[35px] w-[111px] text-[15px] leading-[22.5px] bg-[--status-bg-green] text-[--status-text-green] text-center">
+            <p
+              className={`rounded-[35px] w-[111px] text-[15px] leading-[22.5px] text-center ${statusColor.background} ${statusColor.text}`}
+            >
               {moto.status}
             </p>
           </div>
