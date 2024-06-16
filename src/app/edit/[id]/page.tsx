@@ -1,6 +1,7 @@
 import PageTitle from "@/components/PageTitle";
 import RegisterForm from "@/components/RegisterForm";
 import { ParamsProps } from "@/interfaces";
+import attIcon from "../../../../public/icons/att.svg";
 
 const Edit = ({ params }: ParamsProps) => {
   const idMoto = params.id;
@@ -11,7 +12,11 @@ const Edit = ({ params }: ParamsProps) => {
       <div className="flex flex-row gap-4 py-5 w-full justify-between border-b-[1px] border-[--text-white]">
         <PageTitle title="Editar" />
       </div>
-      <RegisterForm title="Edite as informações que preferir! 📝" />
+      <RegisterForm
+        title="Edite as informações que preferir! 📝"
+        icon={attIcon}
+        btnName="atualizar"
+      />
     </main>
   );
 };

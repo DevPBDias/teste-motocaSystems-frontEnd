@@ -1,8 +1,13 @@
-import { TitleProps } from "@/interfaces";
+import { RegisterProps } from "@/interfaces";
 import Btn from "./Btn";
 import PageTitle from "./PageTitle";
 
-const RegisterForm = ({ title }: TitleProps) => {
+const RegisterForm = ({
+  title,
+  icon,
+  btnName,
+  btnHandleFunction,
+}: RegisterProps) => {
   return (
     <section className="flex flex-col items-center mt-20 gap-12">
       <PageTitle title={title} />
@@ -76,7 +81,14 @@ const RegisterForm = ({ title }: TitleProps) => {
             <option value="Sem estoque">Sem estoque</option>
           </select>
         </div>
-        <Btn height="h-[45px]" width="w-[418px]" route="/" text="registrar" />
+        <Btn
+          height="h-[45px]"
+          width="w-[418px]"
+          btnHandler={btnHandleFunction}
+          type="submit"
+          text={btnName}
+          icon={icon}
+        />
       </form>
     </section>
   );

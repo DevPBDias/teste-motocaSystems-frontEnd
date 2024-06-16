@@ -1,19 +1,17 @@
 import Image from "next/image";
-import Link from "next/link";
-import plusIcon from "../../public/icons/plus.svg";
 import { BtnProps } from "@/interfaces";
 
-const Btn = ({ text, width, height, route }: BtnProps) => {
+const Btn = ({ text, width, height, icon, btnHandler }: BtnProps) => {
   return (
-    <Link
-      href={route}
+    <button
+      onClick={btnHandler}
       className={`${width} ${height} bg-[--btn-bg] flex flex-row items-center justify-center gap-2 rounded-[5px]`}
     >
-      <Image src={plusIcon} alt="plus icon" />
+      <Image src={icon} alt={icon} />
       <p className="text-[12px] font-semibold uppercase leading-[18px]">
         {text}
       </p>
-    </Link>
+    </button>
   );
 };
 
