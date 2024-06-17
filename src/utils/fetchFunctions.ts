@@ -35,6 +35,23 @@ export async function createData(data: DataProps) {
   }
 }
 
+export async function editData(id: string, data: DataProps) {
+  try {
+    const response = await fetch(`http://localhost:8000/motorcycles/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
 export async function deleteData(id: string) {
   try {
     const response = await fetch(`http://localhost:8000/motorcycles/${id}`, {

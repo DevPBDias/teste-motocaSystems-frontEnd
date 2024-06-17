@@ -6,7 +6,9 @@ import PageTitle from "./PageTitle";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { createData } from "@/utils/fetchFunctions";
+import { editData, getDataById } from "@/utils/fetchFunctions";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const motoSchema = z.object({
   id: z.string(),
@@ -16,29 +18,28 @@ const motoSchema = z.object({
   status: z.string(),
 });
 
-const Form = ({ title, icon, btnName }: FormProps) => {
+const Form = ({ title, icon, btnName, idMoto }: any | FormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
-    reset,
+    formState: { errors },
   } = useForm<DataProps>({ resolver: zodResolver(motoSchema) });
 
-  const resetForm = () => {
-    if (isSubmitSuccessful) {
-      reset({
-        id: "",
-        model: "",
-        color: "",
-        price: "",
-        status: "",
-      });
+  const router = useRouter();
+
+  const [motoInfo, setMotoInfo] = useState<any>();
+
+  useEffect(() => {
+    async function getInfo() {
+      const data = await getDataById(idMoto);
+      setMotoInfo(data);
     }
-  };
+    getInfo();
+  }, [idMoto]);
 
   const onSubmit = async (data: DataProps) => {
-    await createData(data);
-    resetForm();
+    await editData(idMoto, data);
+    router.push("/");
   };
 
   return (
@@ -56,6 +57,7 @@ const Form = ({ title, icon, btnName }: FormProps) => {
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
             {...register("id")}
             placeholder="#"
+            defaultValue={motoInfo?.id}
           />
           {errors.id && <span>{errors.id.message}</span>}
         </div>
@@ -69,6 +71,7 @@ const Form = ({ title, icon, btnName }: FormProps) => {
           <input
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
             {...register("model")}
+            defaultValue={motoInfo?.model}
           />
           {errors.model && <span>{errors.model.message}</span>}
         </div>
@@ -82,6 +85,7 @@ const Form = ({ title, icon, btnName }: FormProps) => {
           <input
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
             {...register("color")}
+            defaultValue={motoInfo?.color}
           />
           {errors.color && <span>{errors.color.message}</span>}
         </div>
@@ -95,6 +99,7 @@ const Form = ({ title, icon, btnName }: FormProps) => {
           <input
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
             {...register("price")}
+            defaultValue={motoInfo?.price}
           />
           {errors.price && <span>{errors.price.message}</span>}
         </div>
@@ -107,6 +112,7 @@ const Form = ({ title, icon, btnName }: FormProps) => {
           </label>
           <select
             {...register("status")}
+            defaultValue={motoInfo?.status}
             className="bg-[--bg-primary] h-full w-full pl-5 text-[13px] leading-[19.5px]"
           >
             <option value="Em estoque">Em estoque</option>

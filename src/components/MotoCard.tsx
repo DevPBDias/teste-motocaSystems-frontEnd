@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { deleteData } from "@/utils/fetchFunctions";
 import { useEffect, useState } from "react";
 
-const MotoCard = ({ moto }: any | DataProps) => {
+const MotoCard = ({ moto, setMotos, motos }: any | DataProps) => {
   const router = useRouter();
   const [pendingDelete, setPendingDelete] = useState(false);
   const [statusColor, setStatusColor] = useState({
@@ -21,6 +21,10 @@ const MotoCard = ({ moto }: any | DataProps) => {
     setPendingDelete(true);
     await deleteData(moto.id);
     setPendingDelete(false);
+    const motosFiltered = motos.filter(
+      (item: DataProps) => item.id !== moto.id
+    );
+    setMotos(motosFiltered);
   };
 
   const handleStatus = (status: string) => {

@@ -3,38 +3,31 @@
 import Btn from "@/components/Btn";
 import MotoCard from "@/components/MotoCard";
 import PageTitle from "@/components/PageTitle";
-import SearchInput from "@/components/SearchInput";
 import { DataProps } from "@/interfaces";
-import { getData } from "@/utils/fetchFunctions";
 import plusIcon from "../../public/icons/plus.svg";
+import { getData } from "@/utils/fetchFunctions";
+import SearchInput from "@/components/SearchInput";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
   const [motos, setMotos] = useState<DataProps[] | []>([]);
 
   useEffect(() => {
     const showDataMotos = async () => {
       setMotos(await getData());
     };
-
     showDataMotos();
-  }, [motos]);
-
-  const handleClick = () => {
-    router.push("/register");
-  };
+  }, []);
 
   return (
     <main>
       <section className="flex flex-row gap-4 py-5 w-full justify-between border-b-[1px] border-[--text-white]">
         <PageTitle title="Tabela de Motos" />
         <section className="flex flex-row gap-4">
-          <SearchInput />
+          <SearchInput motos={motos} setMotos={setMotos} />
           <Btn
             type="button"
-            btnHandler={handleClick}
+            route="/register"
             text="novo registro"
             width="w-[142px]"
             height="h-[34px]"
@@ -45,7 +38,12 @@ export default function Home() {
       <section>
         {motos &&
           motos.map((moto: DataProps) => (
-            <MotoCard key={moto.id} moto={moto} />
+            <MotoCard
+              key={moto.id}
+              moto={moto}
+              motos={motos}
+              setMotos={setMotos}
+            />
           ))}
       </section>
     </main>

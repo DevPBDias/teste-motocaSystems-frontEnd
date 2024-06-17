@@ -14,7 +14,7 @@ export interface BtnProps {
   text: string;
   width: string;
   height: string;
-  btnHandler: (() => void) | undefined;
+  route: string;
   icon: string;
   type: string;
 }

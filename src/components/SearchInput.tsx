@@ -1,38 +1,41 @@
 "use client";
-
 import Image from "next/image";
-import searchIcon from "../../public/icons/search.svg";
 import { useState } from "react";
+import searchIcon from "../../public/icons/search.svg";
+import { DataProps } from "@/interfaces";
 
-const SearchInput = () => {
-  const [filterInfo, setFilterInfo] = useState("");
+const SearchInput = ({ motos, setMotos }: any) => {
+  const [searchValue, setSearchValue] = useState<string>("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setFilterInfo(event.target.value);
+  const searchMotos = (value: string) => {
+    const foundMoto = motos.filter(
+      (item: DataProps) =>
+        item.color.toLowerCase().includes(value.toLowerCase()) ||
+        item.model.toLowerCase().includes(value.toLowerCase()) ||
+        item.id.toLowerCase().includes(value.toString())
+    );
+    if (foundMoto) setMotos(foundMoto);
   };
 
-  const handleCLick = (): void => {
-    console.log("clickou");
+  const handleChange = ({ target }: any) => {
+    setSearchValue(target.value);
+    searchMotos(searchValue);
   };
 
   return (
     <form className="relative border-[--text-white] border-2 rounded-[5px] h-[35px] w-[385px]">
       <input
         type="text"
-        name="search"
-        id="search"
         placeholder="Buscar por código, nome e cor"
-        value={filterInfo}
-        className="bg-[--bg-primary] rounded-[5px] h-full w-full text-[11px] leading-4 pl-12 font-normal placeholder:text-[11px] placeholder:leading-4 placeholder:font-normal"
+        value={searchValue}
         onChange={handleChange}
+        className="bg-[--bg-primary] rounded-[5px] h-full w-full text-[11px] leading-4 pl-12 font-normal placeholder:text-[11px] placeholder:leading-4 placeholder:font-normal"
       />
-      <button type="button" onClick={handleCLick}>
-        <Image
-          className="absolute top-2 left-3"
-          src={searchIcon}
-          alt="search icon"
-        />
-      </button>
+      <Image
+        className="absolute top-2 left-3"
+        src={searchIcon}
+        alt="search icon"
+      />
     </form>
   );
 };
