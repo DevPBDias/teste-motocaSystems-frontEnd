@@ -2,7 +2,6 @@ import PageTitle from "@/components/PageTitle";
 import EditForm from "@/components/EditForm";
 import { ParamsProps } from "@/interfaces";
 import attIcon from "../../../../public/icons/att.svg";
-import { getDataById } from "@/utils/fetchFunctions";
 
 const Edit = async ({ params }: ParamsProps) => {
   const idMoto = params.id;
