@@ -2,6 +2,9 @@
 
 Projeto de cadastramento de motos em que foi implementado as funcionalidades de Criar, Ler, Atualizar e Deletar. Além de fazer um mockup do Layout do Figma determinado.
 
+<a href='https://www.figma.com/design/YqufsjX9hR7Qzk9mM359fH/Teste-Motoca-Systems?node-id=0-1&t=DBBBzr6yvVs4N256-0'>Figma do teste</a>
+![Tela Inicial](https://github.com/DevPBDias/teste-motocaSystems-frontEnd/assets/98185872/6afb218c-c4b0-46cb-ab0f-bbbc9d931703)
+
 <details><summary>Para rodar o teste</summary>
 
 Faça um fork e instale as dependências do projeto
